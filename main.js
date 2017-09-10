@@ -14,7 +14,7 @@ clearMessages = function() {
   }
 
   let clock = 0
-  let interval = 500
+  let interval = 2500
   // let beforeId = null
   let messagesStore = []
 
@@ -38,7 +38,7 @@ clearMessages = function() {
   }
 
   function tryDeleteMessage(message) {
-    if (blockedAuthors.indexOf(message.author.id) === -1) {
+    if (blockedAuthors.indexOf(message.author.id) === -1 && message.author.username === username) {
 
       console.log(`Deleting message from ${message.author.username} (${message.content.substring(0, 30)}...)`)
 
