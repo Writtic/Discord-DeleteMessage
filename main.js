@@ -1,5 +1,5 @@
 var authToken = document.body.appendChild(document.createElement `iframe`).contentWindow.localStorage.token.replace(/"/g, "");
-var username = 'USERNAME'
+var username = '???'
 var all = true
 var beforeId = null
 if (typeof(blockedAuthors) === 'undefined') {
@@ -14,7 +14,7 @@ clearMessages = function() {
   }
 
   let clock = 0
-  let interval = 2500
+  let interval = 1000
   // let beforeId = null
   let messagesStore = []
 
@@ -46,6 +46,8 @@ clearMessages = function() {
         headers,
         method: 'DELETE'
       })
+    } else {
+      console.log(`Not deleteing message from ${message.author.username} (${message.content.substring(0, 30)}...)`)
     }
   }
 
