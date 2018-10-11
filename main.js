@@ -1,4 +1,13 @@
-var authToken = document.body.appendChild(document.createElement `iframe`).contentWindow.localStorage.token.replace(/"/g, "");
+var authToken = ""
+if (authToken.length === 0) {
+    var localToken = document.body.appendChild(document.createElement(`iframe`)).contentWindow.localStorage.token
+    if (localToken === undefined) {
+        console.log(`Getting the auth token from localStorage isn't supported on Chrome or the desktop client. Use Firefox or grab it from a network request's headers.`)
+        console.log(`To do that go to the Network tab of your inspector and copy the Authorization header of a request. There are detailed instructions in the tutorial.`)
+    } else {
+        authToken = JSON.parse(localToken)
+    }
+}
 var username = '???'
 var all = true
 var beforeId = null
